@@ -1,0 +1,25 @@
+{
+  "name": "justnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "first-app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc src/first-app.ts",
+    "exe" : "node compiledJS/first-app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yb1727/JustNode.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yb1727/JustNode.js/issues"
+  },
+  "homepage": "https://github.com/yb1727/JustNode.js#readme",
+  "dependencies": {
+    "@types/node": "^17.0.31"
+  }
+}
