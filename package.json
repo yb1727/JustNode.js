@@ -5,8 +5,7 @@
   "main": "first-app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc",
-    "exe" : "node compiledJS/first-app.js"
+    "exe" : "tsc && node compiledJS/nodeServer.js"
   },
   "repository": {
     "type": "git",
