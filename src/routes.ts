@@ -1,6 +1,6 @@
 import * as fs from "fs";
-// New: The handler was moved from the app.ts file here, to separate routing from the main code.
-// We put the functionality here as an anonymous method, referenced by requestHandler
+//The handler was moved from the app.ts file here, to separate routing from the main code.
+//We put the functionality here as an anonymous method, referenced by requestHandler
 const requestHandler = (req, res) => {
     const url = req.url;
     const method = req.method;
@@ -62,5 +62,20 @@ const requestHandler = (req, res) => {
     res.end();
 }
 
-// New: Here, we are exporting the anonymous method reference, so that it can be imported in the main code.
-module.exports = requestHandler;
+const msg = "Hello";
+//Here, we are exporting the anonymous method reference, so that it can be imported in the main code.
+
+// New1: There are several ways to export multiple item as shows here:
+// option 1 - export using an object
+// module.exports = {
+//     reqHandlerKey: requestHandler,
+//     messageKey: msg
+// }
+//
+// option 2 - specify the key and value pair as - module.export.<key> = <variable which we are exporting>:
+// module.exports.reqHandlerKey = requestHandler;
+// module.exports.messageKey = msg;
+//
+// option 3 - use a shortcut form of option 2 bt dropping the module keyword
+exports.reqHandlerKey = requestHandler;
+exports.messageKey = msg;
