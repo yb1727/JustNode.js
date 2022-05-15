@@ -16,18 +16,27 @@ const app = express()
 //      res : the response object to be return to the client
 //      next: a method than can be called to chain this callback method to the next one
 //      ** naming of these input parameters is up to you (e.g. you can call them request, response, nextmethod), as long as you maintain the order of those params.
-app.use ((req, res, next) => {
-    console.log ("I am in the first method in chain");
-    next() ; // flow to the next method in chain below
+// 5-2.1: One another parameter we can add to the use method is the path to which the callback should be responding.
+//      Here, we add the following method to respond to the path of '/user'.
+app.use ('/user',(req, res, next) => {
+    console.log ("I am in the users callback method in chain");
+    res.send("<h1>Hello from express - user Route</h1>")
 });
 
-app.use ((req, res, next) => {
-  console.log ("I am in the next method in chain");
-  // 6. This is the last method of the chain, therefore, we will use express' send method to return a response directly.
-  //    This method accepts as parameters the response body in whic ever format we want (test, html, json, etc...)
+// 5-2.2 Here we add another method to respond to '/'.
+//      Now, it is important to place the the '/' path callback as the last one since it will match anything that starts with '/' including '/users'.
+//      This is special behavior for the '/' route only. Other, more specific routes does not have this behavior (a callback for '/user' will not be invoked if path sent on the request is '/users')
+//      Since we want the method for '/' to only activate of non of the other paths were matched with the other methods, we should place it at the end.
+//      Note - you have the option to place the method for '/' before the other callback methods with more specific paths, if you add the next() method call
+//          as the last command in the callback method (instead of the send method which also returns and doe snot continue the flow), so that code flows to
+//          check the other call back methods paths.
+app.use ('/',(req, res, next) => {
+  console.log ("I am in the default callback method in chain");
+  // 6. We will use express' send method to return a response directly.
+  //    This method accepts as parameters the response body in whichever format we want (text, html, json, etc...)
   //    we don't have to write the response line by line anymore, and express will automatically set the header for content type for us,
-  //    by detecting the reponse body format we sent.
-  res.send("<h1>Hello from express</h1>")
+  //    by detecting the response body format we sent.
+  res.send("<h1>Hello from express - Default Route</h1>")
 });
 // 5-1.4: starting a server express listen command which listens on a port and sets app as a callback
 app.listen(port);
