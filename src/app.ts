@@ -1,10 +1,16 @@
 // 5-1.1: importing http is no needed anymore, express uses it internally to listen on a port
 // 1: importing express
 import * as express from 'express'
+//5.3.1: to be able to parse text request bodies, I have installed the body-parser package.
+import * as bodyParser from 'body-parser'
 
 let port = 8080;
 // 2: setting a local reference variable for the express framework, which will allow us to use the framework's functionality.
 const app = express()
+
+
+// 5.3.2: adding the cody parser to express
+app.use(bodyParser.urlencoded ({extended: false}))
 
 // 5-1.2: Adding middleware : Now in order to process requests, we will need to add call back methods to express to process requests.
 //    You can add more than method (create a chain of methods), which will be run sequentially on the request.
@@ -22,6 +28,22 @@ app.use ('/user',(req, res, next) => {
     console.log ("I am in the users callback method in chain");
     res.send("<h1>Hello from express - user Route</h1>")
 });
+
+//5.3.3: To demonstrate parsing a POST request body, we added here a path which the client can use to add a product using a POST request.
+//       Once the user fills the form and submits it, a separate POST request will be sent on path '/product'
+app.use ('/add-product',(req, res, next) => {
+    res.send("<form action='/product' method='POST'><input type='text' name='title'><button type='submit'>Add Product</button></form>")
+});
+
+//5.3.4: Once POST request is sent on the './product' path, we parse the body using body parser
+//       after that , we use a 'redirect' method provided by express, to redirect the client browser to '/'
+//       Note : that here we use app.post to ensure that only this method is only invoked for POST requests on '/product'
+//              you also also have the other http methods available to you - app.get, app.delete and app.put
+app.post ('/product',(req, res, next) => {
+    console.log(req.body); //  if you enter book as product, this line will show { title: 'book' }
+    res.redirect('/');
+});
+
 
 // 5-2.2 Here we add another method to respond to '/'.
 //      Now, it is important to place the the '/' path callback as the last one since it will match anything that starts with '/' including '/users'.
