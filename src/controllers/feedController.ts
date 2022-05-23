@@ -6,3 +6,18 @@ exports.getPosts= (req,res, next) => {
       posts: [{title: 'first post', content: 'This is the first post'}]
   });
 };
+
+exports.createPosts = (req,res, next) => {
+    // 24.2.3 : We are expecting the client to send a request with json body which has a title and content fields.
+    //          So, here we are extracting that information from the body. Since the body parser was already configured
+    //          to parse json format of request bodies, these should be available here.
+    const title = req.body.title ;
+    const content = req.body.content;
+
+    // 24.2.4: For nos we will return a dummy response (as if we stored the data in the database,
+    //            and populating the response body with data from the request body.
+    res.status(201).json({
+        message : "Data was created successfully",
+        post: {id: new Date().toISOString(),title: title, content: content}
+    });
+};

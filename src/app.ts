@@ -1,8 +1,14 @@
 //24.1.1 - We will build our REST API using express. Therefore, as we saw before, we will import express here
 import * as express from 'express';
 
+//24.2.1 : we will use body-parser to parse incoming json data in request body.
+import * as bodyParser from 'body-parser'
+
 //24.1.2 - creating a basic express app
 const app = express() ;
+
+//24.2.2 : before we can use the body parser, we will initialize it with a configuration to parse json request bodies.
+app.use(bodyParser.json());
 
 // 24.1.7 - After building the feed router, we will first need to import it
 const feedRoute = require ('./routes/feed');

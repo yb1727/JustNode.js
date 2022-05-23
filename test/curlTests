@@ -1,0 +1,2 @@
+
+ curl -d"{\"title\": \"my first post\", \"content\": \"this is my first post\"}" -X POST http://localhost:8080/feed/post
