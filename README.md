@@ -43,4 +43,17 @@ on how to create a client, connection pool and how to query the data base.
 6. Added postman test collection use the test directory to test the GET and POST end points.
     A curl version of these http calls is in the same directory.           
     
-
+=============================================================   
+Chapter 11.1 - Using Sequelizer (ORM) for db instantiation
+=============================================================   
+References:  
+   https://www.npmjs.com/package/sequelize-typescript   
+   https://sequelize.org   
+        
+1. installed sequelize:   
+    $ npm install --save sequelize reflect-metadata sequelize-typescript   
+    $  npm install --save-dev @types/node @types/validator   
+    (a prerequisite for this library is a db driver specific for your db, which we already installed in the last chapter)
+2.  database.ts (11.1.1): Instantiate a connection to the db using the sequelize object.
+3.  post.js (11.1.2): create a sequelizer model (domain object) for the post table.   
+4. app.js (11.1.3) - sync the db with all models defined for the db( creates tables if does not exist)  
