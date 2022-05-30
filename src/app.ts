@@ -45,6 +45,7 @@ db.sync()
        // console.log(results); uncomment this line if you would like the query on the console.
         // 11.1.3.3 : we will start listening to http requests only if the db sync was successful.
         app.listen(8080);
+        console.log("===== App Started===");
     }).catch( err => {
       console.log(err);
     });

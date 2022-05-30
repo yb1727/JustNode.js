@@ -44,7 +44,7 @@ on how to create a client, connection pool and how to query the data base.
     A curl version of these http calls is in the same directory.           
     
 =============================================================   
-Chapter 11.1 - Using Sequelizer (ORM) for db instantiation
+Chapter 11.1 - Using Sequelizer (ORM) for db instantiation   
 =============================================================   
 References:  
    https://www.npmjs.com/package/sequelize-typescript   
@@ -57,3 +57,10 @@ References:
 2.  database.ts (11.1.1): Instantiate a connection to the db using the sequelize object.
 3.  post.js (11.1.2): create a sequelizer model (domain object) for the post table.   
 4. app.js (11.1.3) - sync the db with all models defined for the db( creates tables if does not exist)  
+
+===========================================================================   
+Chapter 11.2 - Adding CRUD operations using Domain objects with Sequelizer
+===========================================================================      
+
+1. feedControllers.ts (11.2.1) : update controllers to perform CRUD operations (here : read (findAll) and create).
+ 
