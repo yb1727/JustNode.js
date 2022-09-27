@@ -1,5 +1,18 @@
 # JustNode.js
 
+===================================
+
+Starting a new node project:
+1. install node and nvm
+2. Create a directory for your project and cd to that directory.
+3. perfrom:
+    $ npx gitignore node
+    $ npm init -y
+    
+    ** the first command creates a .gitignore file for node
+    ** the second command creates an initial package.json for your project
+===================================
+
 ===================================   
 Chapter 10 - Using a Database    
 ===================================   
